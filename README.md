@@ -1,4 +1,4 @@
-# Introduction_to_Econometrics_using_R
+# Introduction to Econometrics using R: Rでの計量経済学入門
 ## 目的
 計量経済学を初めて学ぶ方を想定して作成しました．理論は最小限にして，どうやって実際のデータを分析していくか？にフォーカスしています．Rの操作もかなり詳しく説明しているので，Rでのデータ分析を学びたいというニーズにも答えられると思います．
 
