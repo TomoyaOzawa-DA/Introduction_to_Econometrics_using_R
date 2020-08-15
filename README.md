@@ -6,7 +6,7 @@
 計量経済学とは簡単に言うと経済学でのデータ分析のことです．具体的には，経済学の理論を実際の経済データを用いて実証する学問です．経済・経営・商学部の授業でよくあるかと思います．経済学をバックグラウンドとしていなくても，データ分析におけるモデルの解釈や構築について詳しく学べます．
 
 ## 資料
-スライドは自分の[speakerdock](https://speakerdeck.com/tom01)にて公開しています。その資料にもコードは載せてあります。
+スライドは自分の[speakerdock](https://speakerdeck.com/tom01)にて公開しています。その資料にもコードは載せてあります。データも載せています。一応[Google Drice](https://drive.google.com/drive/folders/1SrOS8assBjACIB3JNiT9UUexlTp8thYX?usp=sharing)にも載せておきます。
 
 ## コンテンツ
 環境構築資料＋本編6回の計7回で構成されています。
