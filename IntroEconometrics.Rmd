@@ -20,7 +20,7 @@ knitr::opts_chunk$set(echo = TRUE)
 ## データの読み込み
 
 ```{r OLS 1}
-df <- read.csv("data/female_labor.csv")
+df <- read.csv("female_labor.csv")
 
 head(df)
 ```
