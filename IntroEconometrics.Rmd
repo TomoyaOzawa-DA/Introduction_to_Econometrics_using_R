@@ -1,0 +1,98 @@
+---
+title: "Econometrics using R"
+author: "Tomoya Ozawa"
+date: "Last Update: 01/29/2021"
+site: bookdown::bookdown_site
+output:
+  bookdown::gitbook: default
+---
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# 単回帰分析
+## 検証する仮説
+
+「教育年数が増えると,賃金は増加するのでは?」という仮説を検証していきます
+
+## データの読み込み
+
+```{r OLS 1}
+df <- read.csv("data/female_labor.csv")
+
+head(df)
+```
+
+## データの把握
+
+### ヒストグラム
+
+
+```{r OLS hist 1}
+hist(df$education)
+```
+
+```{r OLS hist 2}
+hist(df$hourly_wage)
+```
+
+### 散布図
+
+```{r OLS plot 1}
+plot(df$education, df$hourly_wage)
+```
+
+
+### 基本統計量
+
+```{r OLS stat 1}
+summary(df)
+```
+
+## 分析
+
+### 計量経済学モデル
+
+$$ 
+hourly\_wage_{i} = \alpha + \beta\times education_{i} + u_{i} 
+$$
+
+### 推定
+
+```{r OLS est 1}
+out <- lm(hourly_wage ~ education, data = df)
+```
+
+
+## 解釈
+```{r OLS result 1}
+summary(out)
+```
+
+
+```{r OLS result 2}
+plot(df$education, df$hourly_wage)
+
+abline(out, col = "blue")
+```
+
+## 課題
+
+
+## 捕捉
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Econometrics using R</title>
+  <meta name="description" content="Econometrics using R" />
+  <meta name="generator" content="bookdown 0.21 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Econometrics using R" />
+  <meta property="og:type" content="book" />
+  
+  
+  
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Econometrics using R" />
+  
+  
+  
+
+<meta name="author" content="Tomoya Ozawa" />
+
+
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
+<link href="libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
+<script src="libs/anchor-sections-1.0/anchor-sections.js"></script>
+
+
+<style type="text/css">
+code.sourceCode > span { display: inline-block; line-height: 1.25; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li class="chapter" data-level="1" data-path=""><a href="#単回帰分析"><i class="fa fa-check"></i><b>1</b> 単回帰分析</a><ul>
+<li class="chapter" data-level="1.1" data-path=""><a href="#検証する仮説"><i class="fa fa-check"></i><b>1.1</b> 検証する仮説</a></li>
+<li class="chapter" data-level="1.2" data-path=""><a href="#データの読み込み"><i class="fa fa-check"></i><b>1.2</b> データの読み込み</a></li>
+<li class="chapter" data-level="1.3" data-path=""><a href="#データの把握"><i class="fa fa-check"></i><b>1.3</b> データの把握</a><ul>
+<li class="chapter" data-level="1.3.1" data-path=""><a href="#ヒストグラム"><i class="fa fa-check"></i><b>1.3.1</b> ヒストグラム</a></li>
+<li class="chapter" data-level="1.3.2" data-path=""><a href="#散布図"><i class="fa fa-check"></i><b>1.3.2</b> 散布図</a></li>
+<li class="chapter" data-level="1.3.3" data-path=""><a href="#基本統計量"><i class="fa fa-check"></i><b>1.3.3</b> 基本統計量</a></li>
+</ul></li>
+<li class="chapter" data-level="1.4" data-path=""><a href="#分析"><i class="fa fa-check"></i><b>1.4</b> 分析</a><ul>
+<li class="chapter" data-level="1.4.1" data-path=""><a href="#計量経済学モデル"><i class="fa fa-check"></i><b>1.4.1</b> 計量経済学モデル</a></li>
+<li class="chapter" data-level="1.4.2" data-path=""><a href="#推定"><i class="fa fa-check"></i><b>1.4.2</b> 推定</a></li>
+</ul></li>
+<li class="chapter" data-level="1.5" data-path=""><a href="#解釈"><i class="fa fa-check"></i><b>1.5</b> 解釈</a></li>
+<li class="chapter" data-level="1.6" data-path=""><a href="#課題"><i class="fa fa-check"></i><b>1.6</b> 課題</a></li>
+<li class="chapter" data-level="1.7" data-path=""><a href="#捕捉"><i class="fa fa-check"></i><b>1.7</b> 捕捉</a></li>
+</ul></li>
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Econometrics using R</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="header">
+<h1 class="title">Econometrics using R</h1>
+<p class="author"><em>Tomoya Ozawa</em></p>
+<p class="date"><em>Last Update: 01/29/2021</em></p>
+</div>
+<div id="単回帰分析" class="section level1">
+<h1><span class="header-section-number">Chapter 1</span> 単回帰分析</h1>
+<div id="検証する仮説" class="section level2">
+<h2><span class="header-section-number">1.1</span> 検証する仮説</h2>
+<p>「教育年数が増えると,賃金は増加するのでは?」という仮説を検証していきます</p>
+</div>
+<div id="データの読み込み" class="section level2">
+<h2><span class="header-section-number">1.2</span> データの読み込み</h2>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1"></a>df &lt;-<span class="st"> </span><span class="kw">read.csv</span>(<span class="st">&quot;female_labor.csv&quot;</span>)</span>
+<span id="cb1-2"><a href="#cb1-2"></a></span>
+<span id="cb1-3"><a href="#cb1-3"></a><span class="kw">head</span>(df)</span></code></pre></div>
+<pre><code>##   working_hours age education hourly_wage mother_edu father_edu
+## 1          4950  35        12      0.1616         10         10
+## 2          4210  46        12      2.3753          3          3
+## 3          3686  32        14      0.5426         12         12
+## 4          3640  58        12      1.0989          7          3
+## 5          3533  38        15      5.0948         12          7
+## 6          3225  54        16      3.0416         12         12
+##   number_kids_under6 number_kids_6to18
+## 1                  0                 2
+## 2                  0                 0
+## 3                  0                 0
+## 4                  0                 0
+## 5                  2                 2
+## 6                  0                 0</code></pre>
+</div>
+<div id="データの把握" class="section level2">
+<h2><span class="header-section-number">1.3</span> データの把握</h2>
+<div id="ヒストグラム" class="section level3">
+<h3><span class="header-section-number">1.3.1</span> ヒストグラム</h3>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1"></a><span class="kw">hist</span>(df<span class="op">$</span>education)</span></code></pre></div>
+<p><img src="IntroEconometrics_files/figure-html/OLS%20hist%201-1.png" width="672" /></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1"></a><span class="kw">hist</span>(df<span class="op">$</span>hourly_wage)</span></code></pre></div>
+<p><img src="IntroEconometrics_files/figure-html/OLS%20hist%202-1.png" width="672" /></p>
+</div>
+<div id="散布図" class="section level3">
+<h3><span class="header-section-number">1.3.2</span> 散布図</h3>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1"></a><span class="kw">plot</span>(df<span class="op">$</span>education, df<span class="op">$</span>hourly_wage)</span></code></pre></div>
+<p><img src="IntroEconometrics_files/figure-html/OLS%20plot%201-1.png" width="672" /></p>
+</div>
+<div id="基本統計量" class="section level3">
+<h3><span class="header-section-number">1.3.3</span> 基本統計量</h3>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1"></a><span class="kw">summary</span>(df)</span></code></pre></div>
+<pre><code>##  working_hours         age          education      hourly_wage    
+##  Min.   :   0.0   Min.   :30.00   Min.   : 5.00   Min.   : 0.000  
+##  1st Qu.:   0.0   1st Qu.:36.00   1st Qu.:12.00   1st Qu.: 0.000  
+##  Median : 288.0   Median :43.00   Median :12.00   Median : 1.625  
+##  Mean   : 740.6   Mean   :42.54   Mean   :12.29   Mean   : 2.375  
+##  3rd Qu.:1516.0   3rd Qu.:49.00   3rd Qu.:13.00   3rd Qu.: 3.788  
+##  Max.   :4950.0   Max.   :60.00   Max.   :17.00   Max.   :25.000  
+##                                                                   
+##    mother_edu       father_edu     number_kids_under6 number_kids_6to18
+##  Min.   : 3.000   Min.   : 3.000   Min.   :0.0000     Min.   :0.000    
+##  1st Qu.: 7.000   1st Qu.: 7.000   1st Qu.:0.0000     1st Qu.:0.000    
+##  Median :10.000   Median : 7.000   Median :0.0000     Median :1.000    
+##  Mean   : 9.414   Mean   : 8.988   Mean   :0.2377     Mean   :1.353    
+##  3rd Qu.:12.000   3rd Qu.:12.000   3rd Qu.:0.0000     3rd Qu.:2.000    
+##  Max.   :17.000   Max.   :17.000   Max.   :3.0000     Max.   :8.000    
+##  NA&#39;s   :13       NA&#39;s   :15</code></pre>
+</div>
+</div>
+<div id="分析" class="section level2">
+<h2><span class="header-section-number">1.4</span> 分析</h2>
+<div id="計量経済学モデル" class="section level3">
+<h3><span class="header-section-number">1.4.1</span> 計量経済学モデル</h3>
+<p><span class="math display">\[ 
+hourly\_wage_{i} = \alpha + \beta\times education_{i} + u_{i} 
+\]</span></p>
+</div>
+<div id="推定" class="section level3">
+<h3><span class="header-section-number">1.4.2</span> 推定</h3>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1"></a>out &lt;-<span class="st"> </span><span class="kw">lm</span>(hourly_wage <span class="op">~</span><span class="st"> </span>education, <span class="dt">data =</span> df)</span></code></pre></div>
+</div>
+</div>
+<div id="解釈" class="section level2">
+<h2><span class="header-section-number">1.5</span> 解釈</h2>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1"></a><span class="kw">summary</span>(out)</span></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = hourly_wage ~ education, data = df)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.5079 -2.2447 -0.4342  1.3737 22.7553 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) -3.18694    0.61456  -5.186 2.77e-07 ***
+## education    0.45264    0.04918   9.204  &lt; 2e-16 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 3.075 on 751 degrees of freedom
+## Multiple R-squared:  0.1014, Adjusted R-squared:  0.1002 
+## F-statistic: 84.71 on 1 and 751 DF,  p-value: &lt; 2.2e-16</code></pre>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1"></a><span class="kw">plot</span>(df<span class="op">$</span>education, df<span class="op">$</span>hourly_wage)</span>
+<span id="cb11-2"><a href="#cb11-2"></a></span>
+<span id="cb11-3"><a href="#cb11-3"></a><span class="kw">abline</span>(out, <span class="dt">col =</span> <span class="st">&quot;blue&quot;</span>)</span></code></pre></div>
+<p><img src="IntroEconometrics_files/figure-html/OLS%20result%202-1.png" width="672" /></p>
+</div>
+<div id="課題" class="section level2">
+<h2><span class="header-section-number">1.6</span> 課題</h2>
+</div>
+<div id="捕捉" class="section level2">
+<h2><span class="header-section-number">1.7</span> 捕捉</h2>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": null,
+"toc": {
+"collapse": "subsection"
+},
+"search": false
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>
