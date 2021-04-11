@@ -1,3 +1,0 @@
-book_filename: "IntroEconometrics"  # 書籍名(ファイル名になる)
-chapter_name: "Chapter "          # この場合 ch: 1 と自動で振られる
-output_dir: "docs"  
